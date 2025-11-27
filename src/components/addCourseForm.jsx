@@ -41,7 +41,7 @@ export default function AddCourseForm() {
     };
 
     try {
-      const res = await fetch(`http://localhost:4000/courses`, {
+      const res = await fetch(`https://courese-managment-server.vercel.app/courses`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,5 +1,6 @@
 export default async function getAllCourses() {
-    const res = await fetch(`http://localhost:4000/courses`);
-    return res.json();
-  }
-  
+  const res = await fetch(
+    `https://courese-managment-server.vercel.app/courses`
+  );
+  return res.json();
+}

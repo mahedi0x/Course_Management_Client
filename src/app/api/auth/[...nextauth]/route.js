@@ -18,17 +18,20 @@ const handler = NextAuth({
     async signIn({ user }) {
       if (user.email) {
         try {
-          const response = await fetch("http://localhost:4000/users", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: user.name,
-              email: user.email,
-              image: user.image,
-            }),
-          });
+          const response = await fetch(
+            "https://courese-managment-server.vercel.app/users",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                name: user.name,
+                email: user.email,
+                image: user.image,
+              }),
+            }
+          );
 
           if (response.ok) {
             console.log("User saved to MongoDB via Express");

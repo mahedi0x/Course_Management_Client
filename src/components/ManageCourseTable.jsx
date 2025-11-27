@@ -20,7 +20,7 @@ export default function ManageCourseTable({ courses}) {
         const confirmDelete = window.confirm("Are you sure you want to delete this course?");
         if (!confirmDelete) return;
 
-      const res = await fetch(`http://localhost:4000/courses/${id}`, {
+      const res = await fetch(`https://courese-managment-server.vercel.app/courses/${id}`, {
         method: "DELETE",
       });
       const data = await res.json();
