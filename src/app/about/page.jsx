@@ -1,11 +1,12 @@
+import ProfilePage from '@/components/Profile';
 import React from 'react';
 
-const About = () => {
+const AboutPage = () => {
     return (
         <div>
-            <h2>This is About Page..</h2>
+           <ProfilePage></ProfilePage>
         </div>
     );
 };
 
-export default About;
+export default AboutPage;

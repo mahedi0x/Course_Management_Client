@@ -1,84 +1,59 @@
+// app/login/page.tsx
+"use client";
+
 import Link from "next/link";
+import { useSession, signIn } from "next-auth/react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  return (
-    <div className="min-h-screen bg-base-200 flex items-center justify-center p-4 relative overflow-hidden">
-      
-     
-      <div className="card w-full max-w-sm shadow-2xl bg-base-100 z-10">
-        <div className="card-body">
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
-          <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold">Welcome Back</h2>
-            <p className="text-sm text-base-content/70">Enter your credentials to access your account</p>
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
+
+  if (status === "loading") return <div className="min-h-screen flex items-center justify-center text-xl">Loading...</div>;
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+
+          <div className="text-center mb-10">
+            <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
+            <p className="text-gray-600 mt-2">Sign in to continue to CourseHub</p>
           </div>
 
-          {/* Email Login Form */}
-          <form
-            className="space-y-4"
-          >
-            {/* Email Input */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-medium">Email</span>
-              </label>
-              <label className="input input-bordered flex items-center gap-2 focus-within:outline-primary">
-               
-                <input 
-                  type="email" 
-                  name="email"
-                  className="grow" 
-                  placeholder="name@example.com" 
-                  required 
-                />
-              </label>
-            </div>
-
-            {/* Password Input */}
-            <div className="form-control">
-              <div className="label">
-                <span className="label-text font-medium">Password</span>
-              </div>
-              <label className="input input-bordered flex items-center gap-2 focus-within:outline-primary">
-                <input 
-                  type="password" 
-                  name="password"
-                  className="grow" 
-                  placeholder="••••••••" 
-                  required 
-                />
-              </label>
-            </div>
-
-            {/* Login Button */}
-            <div className="form-control mt-6">
-              <button className="btn btn-primary w-full shadow-lg">Login</button>
-            </div>
-          </form>
-
-          {/* Divider */}
-          <div className="divider text-sm text-base-content/60 my-6">OR</div>
-
-          {/* Social Login */}
-          <form action="/api/auth/signin/google" method="POST">
-            <button className="btn btn-outline w-full hover:bg-base-200 hover:border-base-300 transition-colors">
-              <img
-                src="https://www.svgrepo.com/show/475656/google-color.svg"
-                className="w-5 h-5 mr-2"
-                alt="google"
-              />
-              Continue with Google
+          {/* Email/Password Form (দেখানোর জন্য) */}
+          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <input type="email" placeholder="Email" className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" required />
+            <input type="password" placeholder="Password" className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" required />
+            <button type="submit" className="w-full py-3 bg-indigo-600 text-white font-bold rounded-xl cursor-pointer">
+              Sign In with Email
             </button>
           </form>
 
-          {/* Footer Text */}
-          <p className="text-center text-sm text-base-content/70 mt-6">
-            Don’t have an account?{" "}
-            <Link href="/register" className="link link-primary font-semibold no-underline hover:underline">
-              Create an account
-            </Link>
-          </p>
+          <div className="my-8 text-center relative">
+            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-gray-300"></div></div>
+            <span className="relative bg-white px-4 text-sm font-medium text-gray-500">OR</span>
+          </div>
 
+          {/* Google Login */}
+          <button
+            onClick={() => signIn("google", { callbackUrl: "/" })}
+            className="w-full flex items-center justify-center gap-3 py-3 border-2 border-gray-300 rounded-xl hover:bg-gray-50 transition font-medium"
+          >
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-6 h-6" />
+            Continue with Google
+          </button>
+
+          <p className="text-center mt-8 text-sm text-gray-600">
+            Dont have an account? <Link href="/register" className="font-bold text-indigo-600 hover:underline">Register</Link>
+          </p>
         </div>
       </div>
     </div>
