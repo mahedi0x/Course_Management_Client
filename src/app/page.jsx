@@ -1,8 +1,8 @@
-import useSWR from 'swr'
 import Hero from "@/components/HeroSection";
-import LatestCourses from "@/components/LatestCourses";
+
 import WhyLearnWithUs from '@/components/WhyLearnWithUs';
 import Testimonials from '@/components/Testimonials';
+import LatestCourses from '@/components/LatestCourses';
 
 export default function Home() {
   return (
