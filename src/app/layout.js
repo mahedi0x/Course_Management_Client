@@ -35,7 +35,6 @@ export default function RootLayout({ children }) {
           <Toaster position="top-right" />
         </NextAuthSessionProvider>
 
-          {/* <main className="flex-1 ">{children}</main> */}
           <Footer></Footer>
         </div>
       </body>
