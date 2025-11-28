@@ -19,7 +19,7 @@ const instructors = [
     id: 2,
     name: "Mahedi Hasan",
     title: "Fullstack MERN Developer",
-    image: "https://lh3.googleusercontent.com/a/ACg8ocI3CUjapyWDJc683YyzFaW2O-c2eicE6-H0EFyxS0gXBVIIHNY=s96-c",
+    image: "https://i.ibb.co.com/wNfVb7zs/Red-Modern-Formal-Facebook-Profile-Picture.png",
     bio: "Passionate about teaching complete web development from zero to hero.  Built 200+ production Website used by millions.",
     expertise: "MongoDB, Express, React, Nodejs, NextJS",
     courses: 18,

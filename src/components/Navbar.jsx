@@ -16,6 +16,8 @@ export default function Navbar() {
   const publicLinks = [
     { name: "Home", href: "/" },
     { name: "Courses", href: "/courses" },
+    { name: "Add Courses", href: "/add-courses" },
+    { name: "Manage-Courses", href: "/manage-courses" },
     { name: "About", href: "/about" },
     { name: "Instructor", href: "/instructor" },
   ];

@@ -1,7 +1,5 @@
 import CourseCard from "@/components/CourseCard";
 import getLatestCourses from "@/lib/latestCourses";
-
-
 export default async function LatestCourses() {
   const latestAllCourses = await getLatestCourses();
 

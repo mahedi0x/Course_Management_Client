@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-50 py-16 px-6">
+    <div className="min-h-screen bg-gray-50 py-16 ">
       <div className="max-w-7xl mx-auto">
 
         {/* Title */}
