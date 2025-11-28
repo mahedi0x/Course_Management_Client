@@ -8,7 +8,7 @@ import ManageCourseTable from "@/components/ManageCourseTable";
 export default function ManageCourses() {
   const { data: session } = useSession();
   const [courses, setCourses] = useState([]);
-  console.log(courses)
+//   console.log(courses)
 
   useEffect(() => {
     if (!session?.user?.email) return;

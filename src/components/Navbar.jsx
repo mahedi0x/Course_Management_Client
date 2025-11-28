@@ -2,6 +2,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // ← Add this for active route
 import { useState } from "react";
 import { Menu, X, Plus, LayoutList, LogOut } from "lucide-react";
 import { useSession, signOut } from "next-auth/react";
@@ -10,17 +11,21 @@ export default function Navbar() {
   const { data: session, status } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  console.log(session?.user)
+  
+  // ← Get current route
+  const pathname = usePathname();
 
   const publicLinks = [
     { name: "Home", href: "/" },
     { name: "Courses", href: "/courses" },
     { name: "Add Courses", href: "/add-courses" },
-    { name: "Manage-Courses", href: "/manage-courses" },
-    { name: "About", href: "/about" },
+    { name: "Manage Courses", href: "/manage-courses" }, // Fixed name
     { name: "Instructor", href: "/instructor" },
+    { name: "Contact", href: "/contact" },
   ];
+
+  // ← Check if link is active
+  const isActive = (href) => pathname === href;
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
@@ -30,24 +35,38 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-xl">C</span>
+              <span className="text-white font-bold text-xl">L</span>
             </div>
-            <span className="text-2xl font-bold text-gray-900">CourseHub</span>
+            <span className="text-2xl font-bold text-gray-900">LearnSkill</span>
           </Link>
 
-          {/* Desktop Links */}
+          {/* Desktop Links - WITH ACTIVE STYLES */}
           <div className="hidden md:flex items-center space-x-8">
             {publicLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="text-gray-700 hover:text-indigo-600 font-medium transition">
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`
+                  relative font-medium transition-all duration-200 px-1 py-1
+                  ${
+                    isActive(link.href)
+                      ? "text-indigo-600"
+                      : "text-gray-700 hover:text-indigo-600"
+                  }
+                `}
+              >
                 {link.name}
+                {/* Active underline indicator */}
+                {isActive(link.href) && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full" />
+                )}
               </Link>
             ))}
           </div>
 
-          {/* Right Side */}
+          {/* Right Side - Unchanged */}
           <div className="flex items-center space-x-4">
             {status === "authenticated" && session?.user ? (
-              /* Logged In – User Dropdown */
               <div className="relative">
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -65,7 +84,6 @@ export default function Navbar() {
                   </span>
                 </button>
 
-                {/* Dropdown */}
                 {isDropdownOpen && (
                   <>
                     <div className="fixed inset-0 z-10" onClick={() => setIsDropdownOpen(false)} />
@@ -93,7 +111,6 @@ export default function Navbar() {
                 )}
               </div>
             ) : (
-              /* Not Logged In – Login Button (এখন /login পেজে যাবে) */
               <div className="hidden md:flex items-center space-x-3">
                 <Link
                   href="/login"
@@ -104,7 +121,6 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* Mobile Menu Toggle */}
             <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2">
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -112,12 +128,24 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - WITH ACTIVE STYLES */}
       {isOpen && (
         <div className="md:hidden border-t border-gray-200 bg-white">
           <div className="px-6 py-4 space-y-3">
             {publicLinks.map((link) => (
-              <Link key={link.name} href={link.href} onClick={() => setIsOpen(false)} className="block text-gray-700 hover:text-indigo-600 font-medium">
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={`
+                  block py-2 px-3 rounded-xl font-medium transition-all
+                  ${
+                    isActive(link.href)
+                      ? "bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg"
+                      : "text-gray-700 hover:bg-gray-100"
+                  }
+                `}
+              >
                 {link.name}
               </Link>
             ))}

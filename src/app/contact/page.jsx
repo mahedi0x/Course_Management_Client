@@ -1,10 +1,9 @@
 import React from 'react';
+import AboutPage from '../about/page';
 
 const Contact = () => {
     return (
-        <div>
-            <h3>This is Contact Page..</h3>
-        </div>
+        <AboutPage></AboutPage>
     );
 };
 

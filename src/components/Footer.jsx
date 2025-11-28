@@ -37,7 +37,7 @@ export default function Footer() {
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">
                 <span className="text-white font-bold text-xl">C</span>
               </div>
-              <span className="text-2xl font-bold text-gray-900">CourseHub</span>
+              <span className="text-2xl font-bold text-gray-900">LearnSkill</span>
             </Link>
             <p className="text-gray-600 max-w-md">
               The modern platform for creating, managing, and selling online courses. 
@@ -111,14 +111,14 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-3 text-gray-600">
               <Mail className="w-5 h-5" />
-              <span>support@coursehub.com</span>
+              <span>support@learnskill.com</span>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-600">
-          <p>&copy; {currentYear} CourseHub. All rights reserved.</p>
+          <p>&copy; {currentYear} LearnSkill. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-indigo-600 transition">
               Privacy Policy

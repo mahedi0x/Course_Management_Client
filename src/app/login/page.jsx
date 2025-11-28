@@ -25,7 +25,7 @@ export default function LoginPage() {
 
           <div className="text-center mb-10">
             <h1 className="text-3xl font-bold text-gray-900">Welcome Back</h1>
-            <p className="text-gray-600 mt-2">Sign in to continue to CourseHub</p>
+            <p className="text-gray-600 mt-2">Sign in to continue to LearnSkill</p>
           </div>
 
           {/* Email/Password Form (দেখানোর জন্য) */}

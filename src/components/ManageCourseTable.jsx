@@ -9,9 +9,9 @@ import { redirect } from "next/navigation";
 export default function ManageCourseTable({ courses}) {
     const { data: session, status } = useSession();
     
-      if (!session?.user) {
-        redirect("/login");
-      }
+    //   if (!session?.user) {
+    //     redirect("/login");
+    //   }
 
     const [allCourses, setAllCourses] = useState(courses);
     console.log(allCourses)

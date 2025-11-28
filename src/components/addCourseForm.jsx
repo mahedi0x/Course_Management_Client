@@ -7,10 +7,10 @@ import { ToastContainer } from "react-toastify";
 import { redirect } from "next/navigation";
 
 export default function AddCourseForm() {
-  const { data: session } = useSession();
-        if (!session?.user) {
-          redirect("/login");
-        }
+  // const { data: session } = useSession();
+  //       if (!session?.user) {
+  //         redirect("/login");
+  //       }
 
   const {
     register,
