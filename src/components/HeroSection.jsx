@@ -22,8 +22,8 @@ export default function Hero() {
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            <BookOpen className="w-4 h-4" />
-            <span>The #1 Platform for Course Creators</span>
+            <BookOpen className="w-10 h-10" />
+            {/* <span>The #1 Platform for Course Creators</span> */}
           </div>
 
           {/* Main Headline */}

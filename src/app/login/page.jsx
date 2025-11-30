@@ -28,7 +28,7 @@ export default function LoginPage() {
             <p className="text-gray-600 mt-2">Sign in to continue to LearnSkill</p>
           </div>
 
-          {/* Email/Password Form (দেখানোর জন্য) */}
+        
           <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
             <input type="email" placeholder="Email" className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" required />
             <input type="password" placeholder="Password" className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" required />

@@ -48,7 +48,7 @@ export default function CourseCard({ course }) {
 
         {/* Gradient Button - stays at bottom */}
         <Link href={`/courses/${course._id}`} className="mt-auto">
-          <button className="mt-5 w-full text-white font-semibold py-2.5 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600  cursor-pointertransition-all duration-300hover:scale-[1.03] hover:shadow-lg hover:brightness-105">
+          <button className="mt-5 w-full cursor-pointer text-white font-semibold py-2.5 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600  cursor-pointertransition-all duration-300hover:scale-[1.03] hover:shadow-lg hover:brightness-105">
             View Details
           </button>
         </Link>
